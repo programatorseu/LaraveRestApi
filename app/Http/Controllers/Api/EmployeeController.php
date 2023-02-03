@@ -1,9 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
+
 
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\EmployeeCollection;
+use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
 
 class EmployeeController extends Controller
@@ -15,7 +19,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        return new EmployeeCollection(Employee::all());
     }
 
     /**
@@ -47,7 +51,8 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        //
+        // return $employee;
+        return new EmployeeResource($employee);
     }
 
     /**
