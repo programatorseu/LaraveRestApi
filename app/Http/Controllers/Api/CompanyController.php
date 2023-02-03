@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateCompanyRequest;
 use App\Models\Company;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CompanyCollection;
+use App\Http\Resources\CompanyResource;
 
 class CompanyController extends Controller
 {
@@ -49,19 +50,16 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        //
+        // eager loading czy lazy loading 
+        // https://laravel.com/docs/9.x/eloquent-collections#method-loadMissing
+        $pracownicy = request()->query('pracownicy');
+        // 
+        if ($pracownicy) {
+            return new CompanyResource($company->loadMissing('employees'));
+        }
+        return new CompanyResource($company);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Company  $company
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Company $company)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

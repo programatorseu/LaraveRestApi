@@ -20,7 +20,8 @@ class CompanyResource extends JsonResource
             'nip' => $this->nip,
             'adres' => $this->adres,
             'miasto' => $this->miasto,
-            'kodPocztowy' => $this->kod_pocztowy
+            'kodPocztowy' => $this->kod_pocztowy,
+            'pracownicy' =>  EmployeeResource::collection($this->whenLoaded('employees'))
         ];
     }
 }
