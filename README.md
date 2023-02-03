@@ -1,4 +1,5 @@
 # Zadanie - Rest API
+
 Wersja PHP : 8
 
 REST API Utwórz REST API przy użyciu frameworka Laravel / Symfony. 
@@ -13,19 +14,30 @@ Celem aplikacji jest umożliwienie przesłania przez użytkownika informacji odn
 
 
 1) Routes /api/v1/?
-   
+
 - dziala dla index companies 
-`curl http://127.0.0.1:8000/api/v1/companies`
+  `curl http://127.0.0.1:8000/api/v1/companies`
 
 
-1) CRUD endpoints  (create, store, put, patch, delete)
+1. CRUD endpoints  (create, store, put, patch, delete)
 
-   <u>3 problemy egzystencjonalny</u>
-    działa 
-    http://127.0.0.1:8000/api/v1/companies/1?pracownicy=true
-   - ochrona @csrf
-   - throttle?
+   
 
-2) Sanctum 
+   - ochrona @csrf (https://laravel.com/docs/9.x/csrf#preventing-csrf-requests)
+     - nadpisałem `VerifyCsrfToken`
 
-3) Napisac jakie testy ?
+       ```php
+           protected $except = [
+               //
+               'http://127.0.0.1:8000/api/v1/companies/*',
+               'http://127.0.0.1:8000/api/v1/employees/*',
+           ];
+       ```
+
+```
+{"id":1,"imie":"Piotr Sadowski","companyId": 2, "nazwisko":"Koss","email":"Piotr@gmail.com","numerTelefonu":"1"}
+```       
+
+2. Sanctum 
+
+3. Napisac jakie testy ?

@@ -15,7 +15,7 @@ class StoreCompanyRequest extends FormRequest
      */
     public function authorize()
     {
-        //bypasss
+        //bypasss ?? - dodac sanctum
         return true;
     }
 

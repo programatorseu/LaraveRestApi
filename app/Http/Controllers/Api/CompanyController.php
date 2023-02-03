@@ -21,15 +21,7 @@ class CompanyController extends Controller
         return new CompanyCollection(Company::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -39,7 +31,7 @@ class CompanyController extends Controller
      */
     public function store(StoreCompanyRequest $request)
     {
-        //
+        return new CompanyResource(Company::create($request->all()));
     }
 
     /**

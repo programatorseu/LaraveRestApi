@@ -22,15 +22,6 @@ class EmployeeController extends Controller
         return new EmployeeCollection(Employee::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -40,7 +31,8 @@ class EmployeeController extends Controller
      */
     public function store(StoreEmployeeRequest $request)
     {
-        //
+
+        return new EmployeeResource(Employee::create($request->all()));
     }
 
     /**
