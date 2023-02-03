@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DeleteEmployeeRequest;
 use App\Http\Resources\EmployeeCollection;
 use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
@@ -78,8 +79,12 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy(DeleteEmployeeRequest $request, Employee $employee)
     {
-        //
+        $employee->delete($request->all());
+        return response()->json([
+            'status' => 204,
+            'message' => 'Rekord usunięŧy'
+        ]);
     }
 }

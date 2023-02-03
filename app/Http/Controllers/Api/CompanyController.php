@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
 use App\Models\Company;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DeleteCompanyRequest;
 use App\Http\Resources\CompanyCollection;
 use App\Http\Resources\CompanyResource;
 use Throwable;
@@ -83,8 +84,12 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Company $company)
+    public function destroy(DeleteCompanyRequest $request, Company $company)
     {
-        //
+        $company->delete($request->all());
+        return response()->json([
+            'status' => 204,
+            'message' => 'Rekord usunięŧy'
+        ]);
     }
 }

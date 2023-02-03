@@ -39,6 +39,8 @@ Celem aplikacji jest umożliwienie przesłania przez użytkownika informacji odn
 ```       
 
 store & update created 
+delete
+`{"id": 1}`
 
 
 2. Sanctum 
