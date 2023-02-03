@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\EmployeeCollection;
 use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
+use Throwable;
 
 class EmployeeController extends Controller
 {
@@ -48,17 +49,6 @@ class EmployeeController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Employee $employee)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateEmployeeRequest  $request
@@ -68,6 +58,18 @@ class EmployeeController extends Controller
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
         //
+        try {
+            $employee->update($request->all());
+            return response()->json([
+                'status' => 200,
+                'message' => 'Rekord Uaktualniony'
+            ]);
+        } catch (Throwable $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**

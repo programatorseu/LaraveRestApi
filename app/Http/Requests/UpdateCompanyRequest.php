@@ -13,18 +13,33 @@ class UpdateCompanyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
     public function rules()
     {
-        return [
-            //
-        ];
+        if ($this->method() == 'PUT') {
+            return [
+                'nazwa' => ['required'],
+                'nip' => ['required'],
+                'adres' => ['required'],
+                'miasto' => ['required'],
+                'kodPocztowy' => ['required']
+            ];
+        } else {
+            return [
+                'nazwa' => ['sometimes', 'required'],
+                'nip' => ['sometimes', 'required'],
+                'adres' => ['sometimes', 'required'],
+                'miasto' => ['sometimes', 'required'],
+                'kodPocztowy' => ['sometimes', 'required']
+            ];
+        }
+    }
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'kod_pocztowy' => $this->kodPocztowy
+        ]);
     }
 }

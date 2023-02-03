@@ -13,7 +13,7 @@ class UpdateEmployeeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,18 @@ class UpdateEmployeeRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        if ($this->method() == 'PUT') {
+            return [
+                'imie' => ['required'],
+                'nazwisko' => ['required'],
+                'email' => ['required'],
+            ];
+        } else {
+            return [
+                'imie' => ['sometimes', 'required'],
+                'nazwisko'  => ['sometimes', 'required'],
+                'email' => ['sometimes', 'required']
+            ];
+        }
     }
 }

@@ -38,6 +38,9 @@ Celem aplikacji jest umożliwienie przesłania przez użytkownika informacji odn
 {"id":1,"imie":"Piotr Sadowski","companyId": 2, "nazwisko":"Koss","email":"Piotr@gmail.com","numerTelefonu":"1"}
 ```       
 
+store & update created 
+
+
 2. Sanctum 
 
 3. Napisac jakie testy ?

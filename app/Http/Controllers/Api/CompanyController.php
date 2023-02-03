@@ -8,6 +8,7 @@ use App\Models\Company;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CompanyCollection;
 use App\Http\Resources\CompanyResource;
+use Throwable;
 
 class CompanyController extends Controller
 {
@@ -62,7 +63,18 @@ class CompanyController extends Controller
      */
     public function update(UpdateCompanyRequest $request, Company $company)
     {
-        //
+        try {
+            $company->update($request->all());
+            return response()->json([
+                'status' => 200,
+                'message' => 'Rekord Uaktualniony'
+            ]);
+        } catch (Throwable $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
