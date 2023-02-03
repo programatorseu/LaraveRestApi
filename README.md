@@ -23,6 +23,8 @@ Celem aplikacji jest umożliwienie przesłania przez użytkownika informacji odn
    <u>3 problemy egzystencjonalny</u>
 
    - korzsystac z custom form request czy ogolnego.
+       - wybor na Custom - https://laravel.com/docs/9.x/validation#form-request-validation  do przeczytania
+        - https://laravel.com/docs/9.x/eloquent-resources 
    - ochrona @csrf
    - throttle?
 
