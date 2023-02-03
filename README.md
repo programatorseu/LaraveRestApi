@@ -1,4 +1,5 @@
 # Zadanie - Rest API
+Wersja PHP : 8
 
 REST API Utwórz REST API przy użyciu frameworka Laravel / Symfony. 
 
