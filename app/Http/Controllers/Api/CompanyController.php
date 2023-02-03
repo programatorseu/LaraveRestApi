@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Api\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
 use App\Models\Company;
+use App\Http\Controllers\Controller;
 
 class CompanyController extends Controller
 {
@@ -16,6 +17,7 @@ class CompanyController extends Controller
     public function index()
     {
         //
+        return Company::all();
     }
 
     /**

@@ -13,8 +13,12 @@ Celem aplikacji jest umożliwienie przesłania przez użytkownika informacji odn
 
 
 1) Routes /api/v1/?
+   
+- dziala dla index companies 
+`curl http://127.0.0.1:8000/api/v1/companies`
 
-2) CRUD endpoints  (create, store, put, patch, delete)
+
+1) CRUD endpoints  (create, store, put, patch, delete)
 
    <u>3 problemy egzystencjonalny</u>
 
@@ -22,6 +26,6 @@ Celem aplikacji jest umożliwienie przesłania przez użytkownika informacji odn
    - ochrona @csrf
    - throttle?
 
-3) Sanctum 
+2) Sanctum 
 
-4) Napisac jakie testy ?
+3) Napisac jakie testy ?
