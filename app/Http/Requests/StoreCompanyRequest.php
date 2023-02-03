@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCompanyRequest extends FormRequest
@@ -13,7 +15,8 @@ class StoreCompanyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        //bypasss
+        return true;
     }
 
     /**
@@ -24,7 +27,18 @@ class StoreCompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nazwa' => ['required'],
+            'nip' => ['required'],
+            'adres' => ['required'],
+            'miasto' => ['required'],
+            'kodPocztowy' => ['required']
         ];
+    }
+    // https://laravel.com/docs/9.x/validation#preparing-input-for-validation
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'kod_pocztowy' => $this->kodPocztowy
+        ]);
     }
 }
