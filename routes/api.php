@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterTokenController;
 use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\Api\EmployeeController;
 use Illuminate\Http\Request;
@@ -16,11 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/v1/register', [RegisterTokenController::class, 'register']);
+Route::post('/v1/login', [RegisterTokenController::class, 'login']);
 
-Route::prefix('v1')->group(function () {
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::middleware('auth:sanctum')->prefix('v1')->group(function () {
     Route::apiResource('companies', CompanyController::class);
     Route::apiResource('employees', EmployeeController::class);
 });

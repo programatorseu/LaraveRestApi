@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -54,6 +55,11 @@ class Handler extends ExceptionHandler
                     'message' => 'Brak rekordu.'
                 ], 404);
             }
+        });
+        $this->renderable(function (RouteNotFoundException $e, $request) {
+            return response()->json([
+                'message' => 'Nie masz dostępu'
+            ], 404);
         });
     }
 }
