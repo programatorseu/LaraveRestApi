@@ -1,4 +1,4 @@
-# Zadanie - Rest API
+ Rest API
 
 Środowisko: 
 
